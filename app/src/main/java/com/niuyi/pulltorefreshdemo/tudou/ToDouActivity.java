@@ -1,4 +1,4 @@
-package com.niuyi.pulltorefreshdemo.ithome;
+package com.niuyi.pulltorefreshdemo.tudou;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,10 +12,10 @@ import butterknife.ButterKnife;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 
-public class ItHomeActivity extends AppCompatActivity {
+public class ToDouActivity extends AppCompatActivity {
 
     @BindView(R.id.itrefreshlayout)
-    MyItRefreshLayout mItrefreshlayout;
+    MyToDouLayout mItrefreshlayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

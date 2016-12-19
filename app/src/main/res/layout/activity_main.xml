@@ -43,12 +43,12 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_it"
+            android:id="@+id/btn_todou"
             android:layout_width="0dp"
             android:layout_height="160dp"
             android:layout_weight="1"
             android:background="@android:color/holo_blue_light"
-            android:text="it之家"/>
+            android:text="土豆"/>
 
         <Button
             android:id="@+id/btn_acfun"

@@ -1,10 +1,11 @@
-package com.niuyi.pulltorefreshdemo.ithome;
+package com.niuyi.pulltorefreshdemo.tudou;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
@@ -21,11 +22,10 @@ import in.srain.cube.views.ptr.indicator.PtrIndicator;
  * 作者：${牛毅} on 2016/12/19 10:25
  * 邮箱：niuyi19900923@hotmail.com
  */
-public class MyItRefreshHeader extends FrameLayout implements PtrUIHandler {
+public class MyToDouHeader extends FrameLayout implements PtrUIHandler {
 
-    private ImageView mIvArrow, mIvLoading;
+    private ImageView mIvPlay;
     private TextView mTvRemain;
-    private TextView mTvTime;
 
     private int mState;//状态标识符
 
@@ -34,50 +34,47 @@ public class MyItRefreshHeader extends FrameLayout implements PtrUIHandler {
     private static final int STATE_BEGIN = 2;
     private static final int STATE_COMPLETE = 3;
 
-    private RotateAnimation up, down, circle;
-    private View view;
+    private RotateAnimation rotateAnim, rotateASelf;
+    private AnimationSet set;
 
 
-    public MyItRefreshHeader(Context context, AttributeSet attrs) {
+    public MyToDouHeader(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public MyItRefreshHeader(Context context) {
+    public MyToDouHeader(Context context) {
         super(context);
         init();
     }
 
-    public MyItRefreshHeader(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MyToDouHeader(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
     private void init() {
-        view = LayoutInflater.from(getContext()).inflate(R.layout.my_ithome_refresh_header_view, this, false);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.my_todou_refresh_header_view, this, false);
 
-        mIvArrow = (ImageView) view.findViewById(R.id.iv_arrow);
-        mIvLoading = (ImageView) view.findViewById(R.id.iv_loading);
+        mIvPlay = (ImageView) view.findViewById(R.id.iv_play);
         mTvRemain = (TextView) view.findViewById(R.id.tv_remain);
-        mTvTime = (TextView) view.findViewById(R.id.tv_time);
 
-        up = new RotateAnimation(0, 180, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        up.setInterpolator(new LinearInterpolator());//不停顿
-        up.setRepeatCount(0);//重复次数
-        up.setFillAfter(true);//停在最后
-        up.setDuration(500);
+        set = new AnimationSet(true);
 
-        down = new RotateAnimation(180, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        down.setInterpolator(new LinearInterpolator());//不停顿
-        down.setRepeatCount(0);//重复次数
-        down.setFillAfter(true);//停在最后
-        down.setDuration(500);
+        rotateAnim = new RotateAnimation(360, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        rotateAnim.setInterpolator(new LinearInterpolator());//不停顿
+        rotateAnim.setRepeatCount(-1);//重复次数
+        rotateAnim.setFillAfter(false);//停在最后
+        rotateAnim.setDuration(300);
 
-        circle = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        circle.setInterpolator(new LinearInterpolator());//不停顿
-        circle.setRepeatCount(-1);//重复次数
-        circle.setFillAfter(false);//停在最后
-        circle.setDuration(500);
+        rotateASelf = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.3f, Animation.RELATIVE_TO_SELF, 0.2f);
+        rotateASelf.setInterpolator(new LinearInterpolator());//不停顿
+        rotateASelf.setRepeatCount(-1);//重复次数
+        rotateASelf.setFillAfter(false);//停在最后
+        rotateASelf.setDuration(300);
+
+        set.addAnimation(rotateAnim);
+        set.addAnimation(rotateASelf);
 
         addView(view);
     }
@@ -85,8 +82,6 @@ public class MyItRefreshHeader extends FrameLayout implements PtrUIHandler {
     @Override
     public void onUIReset(PtrFrameLayout frame) {
         mState = STATE_RESET;
-        mIvArrow.setVisibility(View.VISIBLE);
-        mIvLoading.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -97,34 +92,29 @@ public class MyItRefreshHeader extends FrameLayout implements PtrUIHandler {
     @Override
     public void onUIRefreshBegin(PtrFrameLayout frame) {
         mState = STATE_BEGIN;
-
-        mIvArrow.setVisibility(View.INVISIBLE);
-        mIvLoading.setVisibility(View.VISIBLE);
-
-        mIvLoading.startAnimation(circle);
+        if (rotateAnim != null) mIvPlay.startAnimation(set);
     }
 
     @Override
     public void onUIRefreshComplete(PtrFrameLayout frame, boolean isHeader) {
         mState = STATE_COMPLETE;
-        mIvLoading.clearAnimation();
+        mIvPlay.clearAnimation();
     }
 
     @Override
     public void onUIPositionChange(PtrFrameLayout frame, boolean isUnderTouch, byte status, PtrIndicator ptrIndicator) {
         switch (mState) {
             case STATE_RESET:
-
                 break;
             case STATE_PREPARE:
                 if (ptrIndicator.getCurrentPercent() <= 1.2) {
                     mTvRemain.setText("下拉刷新");
                 } else {
-                    mTvRemain.setText("释放立即刷新");
+                    mTvRemain.setText("释放刷新");
                 }
                 break;
             case STATE_BEGIN:
-                mTvRemain.setText("正在刷新...");
+                mTvRemain.setText("正在刷新");
                 break;
             case STATE_COMPLETE:
                 mTvRemain.setText("下拉刷新");

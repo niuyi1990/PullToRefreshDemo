@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.niuyi.pulltorefreshdemo.ithome.MyItRefreshLayout
+    <com.niuyi.pulltorefreshdemo.tudou.MyToDouLayout
         android:id="@+id/itrefreshlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -15,6 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-    </com.niuyi.pulltorefreshdemo.ithome.MyItRefreshLayout>
+    </com.niuyi.pulltorefreshdemo.tudou.MyToDouLayout>
 
 </FrameLayout>

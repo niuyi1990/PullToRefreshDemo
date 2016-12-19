@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.niuyi.pulltorefreshdemo.acfun.AcFunActivity;
-import com.niuyi.pulltorefreshdemo.ithome.ItHomeActivity;
+import com.niuyi.pulltorefreshdemo.tudou.ToDouActivity;
 import com.niuyi.pulltorefreshdemo.jd.JDActivity;
 import com.niuyi.pulltorefreshdemo.nba.NBAActivity;
 
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Button mBtnJd;
     @BindView(R.id.btn_nba)
     Button mBtnNba;
-    @BindView(R.id.btn_it)
+    @BindView(R.id.btn_todou)
     Button mBtnIt;
     @BindView(R.id.btn_acfun)
     Button mBtnAcfun;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.btn_jd, R.id.btn_nba, R.id.btn_it, R.id.btn_acfun})
+    @OnClick({R.id.btn_jd, R.id.btn_nba, R.id.btn_todou, R.id.btn_acfun})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_jd:
@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_nba:
                 startActivity(new Intent(this, NBAActivity.class));
                 break;
-            case R.id.btn_it:
-                startActivity(new Intent(this, ItHomeActivity.class));
+            case R.id.btn_todou:
+                startActivity(new Intent(this, ToDouActivity.class));
                 break;
             case R.id.btn_acfun:
                 startActivity(new Intent(this, AcFunActivity.class));

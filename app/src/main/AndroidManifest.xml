@@ -24,7 +24,7 @@
             android:label="NBA">
         </activity>
         <activity
-            android:name=".ithome.ItHomeActivity"
+            android:name=".tudou.ToDouActivity"
             android:label="it之家">
         </activity>
         <activity
