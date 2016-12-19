@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_ac_fun"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.niuyi.pulltorefreshdemo.acfun.MyAcFunRefreshLayout
+        android:id="@+id/acfun_refreshlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+    </com.niuyi.pulltorefreshdemo.acfun.MyAcFunRefreshLayout>
+
+
+</RelativeLayout>

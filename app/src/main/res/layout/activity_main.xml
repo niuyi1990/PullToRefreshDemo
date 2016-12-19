@@ -12,16 +12,52 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.niuyi.pulltorefreshdemo.MainActivity">
 
-    <Button
-        android:id="@+id/btn_jd"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="京东"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_nba"
+        <Button
+            android:id="@+id/btn_jd"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_red_light"
+            android:text="京东"/>
+
+        <Button
+            android:id="@+id/btn_nba"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@android:color/holo_green_light"
+            android:text="NBA"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="NBA"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/btn_it"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_blue_light"
+            android:text="it之家"/>
+
+        <Button
+            android:id="@+id/btn_acfun"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@android:color/holo_purple"
+            android:text="AcFun"/>
+
+    </LinearLayout>
 </LinearLayout>

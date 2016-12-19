@@ -15,9 +15,21 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".jd.JDActivity">
+        <activity
+            android:name=".jd.JDActivity"
+            android:label="京东">
         </activity>
-        <activity android:name=".nba.NBAActivity">
+        <activity
+            android:name=".nba.NBAActivity"
+            android:label="NBA">
+        </activity>
+        <activity
+            android:name=".ithome.ItHomeActivity"
+            android:label="it之家">
+        </activity>
+        <activity
+            android:name=".acfun.AcFunActivity"
+            android:label="AcFun">
         </activity>
     </application>
 
