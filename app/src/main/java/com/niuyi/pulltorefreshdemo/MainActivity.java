@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.niuyi.pulltorefreshdemo.acfun.AcFunActivity;
+import com.niuyi.pulltorefreshdemo.meituan.MeiTuanActivity;
 import com.niuyi.pulltorefreshdemo.tudou.ToDouActivity;
 import com.niuyi.pulltorefreshdemo.jd.JDActivity;
 import com.niuyi.pulltorefreshdemo.nba.NBAActivity;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.btn_jd, R.id.btn_nba, R.id.btn_todou, R.id.btn_acfun})
+    @OnClick({R.id.btn_jd, R.id.btn_nba, R.id.btn_todou, R.id.btn_acfun, R.id.btn_meituan})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_jd:
@@ -49,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_acfun:
                 startActivity(new Intent(this, AcFunActivity.class));
+                break;
+            case R.id.btn_meituan:
+                startActivity(new Intent(this, MeiTuanActivity.class));
                 break;
         }
     }

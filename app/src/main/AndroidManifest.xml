@@ -31,6 +31,8 @@
             android:name=".acfun.AcFunActivity"
             android:label="AcFun">
         </activity>
+        <activity android:name=".meituan.MeiTuanActivity">
+        </activity>
     </application>
 
 </manifest>
